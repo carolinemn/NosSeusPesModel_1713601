@@ -1,0 +1,55 @@
+﻿<Window x:Class="NoSeusPesWpf.WindowGerenciarPessoasJuridicas"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NoSeusPesWpf"
+        mc:Ignorable="d"
+        Title="WindowGerenciarPessoasJuridicas" Height="450" Width="800">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <Label>Razao Social:</Label>
+        <Label Grid.Row="2">CNPJ:</Label>
+        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Path=PessoaJuridicaSelecionada.CNPJ }"></TextBox>
+        <Label Grid.Row="3">Endereço:</Label>
+        <TextBox Grid.Row="3" Grid.Column="2" Text="{Binding Path=PessoaJuridicaSelecionada.Endereco }"></TextBox>
+        <Label Grid.Row="4">Complemento:</Label>
+        <TextBox Grid.Row="4" Grid.Column="2" Text="{Binding Path=PessoaJuridicaSelecionada.Complemento }"></TextBox>
+        <Label Grid.Row="5">Cidade:</Label>
+        <TextBox Grid.Row="5" Grid.Column="2" Text="{Binding Path=PessoaJuridicaSelecionada.Cidade }"></TextBox>
+        <Label Grid.Row="6">Estado:</Label>
+        <TextBox Grid.Row="6" Grid.Column="2" Text="{Binding Path=PessoaJuridicaSelecionada.Cidade }"></TextBox>
+
+        <DataGrid x:Name="PesssoasJuridicasDataGridView" Grid.Row="8" Grid.ColumnSpan="2" Margin="20" 
+                  Visibility="{Binding Path=VisibilidadeDataGrid}"
+                  ItemsSource="{Binding Path=PessoasJuridicas}"  CanUserAddRows="False"
+                  IsReadOnly="True"
+                  SelectedItem="{Binding Path=PessoaJuridicaSelecionada}" AutoGenerateColumns="False" 
+                  SelectionChanged="PesssoasJuridicasDataGridView_SelectionChanged"
+                  >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding PessoaJuridica.Id}"></DataGridTextColumn>
+                <DataGridTextColumn Header="RazaoSocial" Binding="{Binding PessoaJuridica.Nome}" ></DataGridTextColumn>
+                <DataGridTextColumn Header="CNPJ" Binding="{Binding PessoaJuridica.CPF}" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Cidade" Binding="{Binding PessoaJuridica.Cidade}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Estado" Binding="{Binding PessoaJuridica.Estado}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>

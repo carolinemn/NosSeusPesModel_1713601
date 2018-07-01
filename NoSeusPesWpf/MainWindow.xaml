@@ -1,0 +1,86 @@
+﻿<Window x:Class="NoSeusPesWpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NoSeusPesWpf"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Menu>
+            <MenuItem Header="Gerenciar">
+                <MenuItem
+                    x:Name="GerenciarPedidos"
+                    Click="MenuItem_Click"
+                    Header="Gerenciar Pedidos"/>
+
+                <MenuItem                
+                    x:Name="GerenciarSapatos"
+                    Click="MenuItem_Click"
+                    Header="Gerenciar Sapatos"/>
+
+                <MenuItem Header="Gerenciar Pessoas">
+                    <MenuItem                        
+                        x:Name="GerenciarPessoasJuridicas"
+                        Click="MenuItem_Click"
+                        Header="Pessoas Juridicas"/>
+                    <MenuItem                        
+                        x:Name="GerenciarPessoasFisicas"
+                        Click="MenuItem_Click"
+                        Header="Pessoas Fisicas"/>
+                </MenuItem>
+            </MenuItem>
+
+            <MenuItem Header="Cadastrar">
+
+                    <MenuItem 
+                        x:Name="NovoPedido"
+                        Click="MenuItem_Click"
+                        Header="Novo Pedido"/>
+
+                    <MenuItem 
+                        x:Name="NovoSapato"
+                        Click="MenuItem_Click"
+                        Header="Novo Sapato"/>
+                
+                    <MenuItem Header="NovaPessoa">
+                        <MenuItem
+                            x:Name="NovaPessoaJuridica"
+                            Click="MenuItem_Click"
+                            Header="PessoaJuridica"/>                    
+                        <MenuItem
+                            x:Name="NovaPessoaFisica"
+                            Click="MenuItem_Click"
+                            Header="PessoaFisica"/>
+                    </MenuItem>
+            </MenuItem>
+            
+            <MenuItem Header="Relatórios">
+                <MenuItem Header="Sapatos e Pedidos"
+                          x:Name="Relatorio_SapatosPedidos"
+                          Click="MenuItem_Click"></MenuItem>
+            </MenuItem>
+            
+            <MenuItem Header="Sair"></MenuItem>
+            
+        </Menu>
+        <TextBox
+            x:Name="TextBox1"
+            Grid.Row="2"
+            Background="{Binding 
+            RelativeSource={RelativeSource Self},
+            Path=Text}"
+            ></TextBox>
+        <TextBox
+            x:Name="TextBox2"
+            Grid.Row="1"
+            Text="{Binding Text, ElementName=TextBox1, Mode=OneWay}">
+
+        </TextBox>
+    </Grid>
+</Window>

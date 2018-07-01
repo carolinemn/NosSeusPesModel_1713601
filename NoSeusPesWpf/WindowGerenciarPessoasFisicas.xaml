@@ -1,0 +1,47 @@
+﻿<Window x:Class="NoSeusPesWpf.WindowGerenciarPessoasFisicas"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NoSeusPesWpf"
+        mc:Ignorable="d"
+        Title="WindowGerenciarPessoasFisicas" Height="450" Width="800">    
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Label>Nome:</Label>
+        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Path=PessoaFisicaSeleciona.Nome }"></TextBox>
+        <Label Grid.Row="1">CPF:</Label>
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Path=PessoaFisicaSeleciona.Nome }"></TextBox>
+        
+        <Label Content="DataNascimento"  Grid.Row="2"/>
+        <DatePicker  Grid.Row="2" Grid.Column="1" 
+                     SelectedDate="{Binding Path=PessoaFisicaSelecionada.DataNascimento}">
+        </DatePicker>
+
+        <DataGrid x:Name="PesssoasFisicasDataGridView" Grid.Row="3" Grid.ColumnSpan="2" Margin="20" 
+                  Visibility="{Binding Path=VisibilidadeDataGrid}"
+                  ItemsSource="{Binding Path=PessoasFisicas}"  CanUserAddRows="False"
+                  IsReadOnly="True"
+                  SelectedItem="{Binding Path=PessoaFisicaSelecionada}" AutoGenerateColumns="False" 
+                  SelectionChanged="PesssoasFisicasDataGridView_SelectionChanged"
+                  >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding Id}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Nome" Binding="{Binding Nome}" ></DataGridTextColumn>
+                <DataGridTextColumn Header="CPF" Binding="{Binding CPF}" ></DataGridTextColumn>
+                <DataGridTextColumn Header="DataNascimento" Binding="{Binding PessoaFisica.DataNascimento}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
